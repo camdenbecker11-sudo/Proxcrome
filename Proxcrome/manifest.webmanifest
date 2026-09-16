@@ -1,0 +1,11 @@
+{
+  "name": "Remote Chrome Browser",
+  "short_name": "Proxcrome",
+  "description": "A remote Chrome browser exposed through noVNC over HTTPS",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c1117",
+  "theme_color": "#0c1117",
+  "orientation": "landscape",
+  "icons": []
+}

@@ -1,0 +1,5 @@
+{$DOMAIN} {
+    encode gzip
+    reverse_proxy proxcrome:8080
+    tls {$EMAIL}
+}

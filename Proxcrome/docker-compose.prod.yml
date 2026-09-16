@@ -1,0 +1,45 @@
+version: "3.8"
+services:
+  proxcrome:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - TARGET_URL=${TARGET_URL:-https://www.xbox.com/play}
+      - VNC_PASSWORD=${VNC_PASSWORD:?VNC_PASSWORD must be set}
+    volumes:
+      - proxcrome_profile:/data/profile
+    shm_size: "1gb"
+    restart: unless-stopped
+    networks:
+      - proxcrome-net
+    expose:
+      - "8080"
+      - "5900"
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - proxcrome
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - DOMAIN=${DOMAIN:-browser.example.com}
+      - EMAIL=${EMAIL:-you@example.com}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - proxcrome-net
+
+volumes:
+  proxcrome_profile:
+  caddy_data:
+  caddy_config:
+
+networks:
+  proxcrome-net:
+    driver: bridge
