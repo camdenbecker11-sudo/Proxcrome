@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0c1117" />
+  <title>Proxcrome</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div>
+          <div class="brand-name">Proxcrome</div>
+          <div class="brand-tag">Remote Chrome via noVNC</div>
+        </div>
+      </div>
+      <a class="button button-secondary" href="#deploy">Deploy</a>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">Full browser in a container</p>
+      <h1>Run a password-protected Chrome session in the browser.</h1>
+      <p class="subtext">
+        Proxcrome exposes a real Google Chrome desktop through noVNC. GitHub Pages is only the guide page.
+        The actual browser session runs in Docker on a host that supports HTTPS and web access.
+      </p>
+      <div class="actions">
+        <a class="button button-primary" href="#connect">Connect to noVNC</a>
+        <a class="button button-secondary" href="https://github.com/camdenbecker11-sudo/Proxcrome" target="_blank" rel="noreferrer">View repo</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>1. Run the browser</h2>
+        <p>Deploy the Docker container on a VPS, Codespace, or local cloud VM.</p>
+        <code>docker-compose up --build</code>
+      </article>
+      <article class="card">
+        <h2>2. Connect securely</h2>
+        <p>Open the noVNC endpoint over HTTPS and enter the VNC password.</p>
+        <code>https://browser.example.com/vnc.html</code>
+      </article>
+      <article class="card">
+        <h2>3. Use Chrome</h2>
+        <p>Browse normally in a full browser session, including cloud gaming, web apps, and services.</p>
+      </article>
+    </section>
+
+    <section id="connect" class="panel">
+      <h2>Connection guide</h2>
+      <ol>
+        <li>Set a strong <code>VNC_PASSWORD</code>.</li>
+        <li>Deploy the Docker host with HTTPS.</li>
+        <li>Expose the noVNC web UI publicly through a reverse proxy.</li>
+        <li>Use the public URL to connect to the full Chrome remote desktop.</li>
+      </ol>
+      <div class="note">
+        This page is a guide only. GitHub Pages cannot host the Chrome browser session itself.
+      </div>
+    </section>
+
+    <section id="deploy" class="panel">
+      <h2>Production example</h2>
+      <pre>docker run -d --rm \
+  -p 8080:8080 \
+  -p 5900:5900 \
+  -e VNC_PASSWORD=your-strong-password \
+  -e TARGET_URL=https://www.xbox.com/play \
+  --name proxcrome \
+  camdenbecker11-sudo/proxcrome:latest</pre>
+      <p>Then expose <code>https://browser.example.com</code> to your reverse proxy and point it to the container's port 8080.</p>
+    </section>
+  </main>
+</body>
+</html>

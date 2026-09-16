@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  proxcrome:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - TARGET_URL=https://www.google.com
+      - VNC_PASSWORD=changeme
+    ports:
+      - "8080:8080"
+      - "5900:5900"
+    volumes:
+      - proxcrome_profile:/data/profile
+    shm_size: "1gb"
+    restart: unless-stopped
+
+volumes:
+  proxcrome_profile:

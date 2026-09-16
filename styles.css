@@ -1,0 +1,195 @@
+:root {
+  color-scheme: dark;
+  --bg: #0c1117;
+  --panel: #121b25;
+  --panel-2: #171f2d;
+  --text: #edf5ff;
+  --muted: #afc0d6;
+  --line: rgba(255,255,255,0.12);
+  --primary: #7dd3fc;
+  --secondary: #86efac;
+  --shadow: rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: radial-gradient(circle at top left, rgba(125, 211, 252, 0.18), transparent 35%), var(--bg);
+  color: var(--text);
+  font-family: Inter, "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shell {
+  width: min(1100px, calc(100% - 32px));
+  padding: 32px 0 48px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #071018;
+  font-weight: 800;
+  font-size: 1.35rem;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.brand-tag {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  min-height: 46px;
+  padding: 0 18px;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #06121a;
+}
+
+.button-secondary {
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.hero {
+  max-width: 820px;
+  margin-bottom: 30px;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: var(--secondary);
+  font-size: 0.75rem;
+}
+
+h1 {
+  margin: 0 0 18px;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1;
+}
+
+.subtext {
+  max-width: 720px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.card, .panel {
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 14px 32px var(--shadow);
+}
+
+.card h2, .panel h2 {
+  margin-top: 0;
+}
+
+.card p, .panel p, .panel li, .panel pre {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+code {
+  background: rgba(255,255,255,0.04);
+  padding: 0.2rem 0.45rem;
+  border-radius: 8px;
+  color: var(--text);
+}
+
+pre {
+  white-space: pre-wrap;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.panel {
+  margin-top: 20px;
+}
+
+.note {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--secondary);
+  background: rgba(134, 239, 172, 0.08);
+  color: var(--text);
+  border-radius: 12px;
+}
+
+ol {
+  color: var(--muted);
+  line-height: 1.8;
+  padding-left: 1.2rem;
+}
